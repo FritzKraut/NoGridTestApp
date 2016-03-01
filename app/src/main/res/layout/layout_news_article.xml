@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--
+
+
+                                   OLD!!!!!!!!!!!!!!!!!!111
+
+
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/rss_image_view"
+            android:src="@drawable/placeholder_medium_100x70"
+            android:layout_gravity="top"
+            android:layout_width="100dip"
+            android:layout_height="70dip"
+            android:scaleType="centerCrop"
+            android:paddingTop="4dp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rss_title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:text="Title title Title title Title title Title title Title title "
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:paddingLeft="4dp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/rss_description_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:ellipsize="end"
+        android:text="Article article Article article Article article Article article Article article Article article Article article Article article "
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:paddingTop="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Date:Date:Date"
+        android:id="@+id/rss_date_view"
+        android:paddingTop="4dp"
+        android:layout_gravity="right" />
+
+
+</LinearLayout>

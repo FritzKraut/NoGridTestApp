@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.macbook.nogridtestapp"
+    android:revisionCode="1"
+    android:versionName="0.1" >
+
+    <uses-sdk
+        android:maxSdkVersion="22"
+        android:minSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/my_stolen_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.Base"
+        android:largeHeap="true"
+        >
+        <activity
+            android:name=".MainActivity"
+            android:label="Rss Feed" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Rss_List_View"
+            android:label="@string/title_activity_rss__list__view">
+            <!--
+            meta-data bestimmt den returnButten
+            -->
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

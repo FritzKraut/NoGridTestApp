@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NoGridTestApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_rss__list__view">Rss_List_View</string>
+    <string name="action_autorenew">action_autorenew</string>
+    <string name="action_add">action_add</string>
+    <string name="action_remove">action_remove</string>
+    <string name="add_dialgog_text">Enter name and URL</string>
+    <string name="add_dialog_name">Name</string>
+    <string name="add_dialog_URL">URL</string>
+    <string name="add_dialog_OK">OK</string>
+    <string name="add_dialog_Cancel">Cancel</string>
+    <string name="share_Dialog">Share with...</string>
+</resources>

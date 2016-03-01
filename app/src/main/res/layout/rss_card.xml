@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+        android:src="@drawable/placeholder_medium_100x70"
+
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:padding="4dp">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:elevation="5dp"
+        card_view:cardCornerRadius="4dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/rss_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/loading" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/ColorPrimaryDark"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/rss_title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:ellipsize="end"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:text="Title title Title title Title title Title title "
+                    android:textColor="@color/ColorVeryLight1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textIsSelectable="true" />
+
+
+                <TextView
+                    android:id="@+id/rss_date_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:ellipsize="end"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="Date:Date:date"
+                    android:textSize="10dp"
+                    android:textColor="@color/ColorVeryLight1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/rss_description_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingBottom="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="16dp"
+                android:text="Article article Article article Article article Article article Article article Article article Article article "
+                android:textSize="14sp"
+                android:textColor="@color/blog_title"
+                android:textIsSelectable="true" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp">
+
+                <Button
+                    android:id="@+id/buttonShare"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:paddingRight="4dp"
+                    android:text="SHARE"
+                    android:textColor="@color/ColorAccent2"
+                    android:textSize="14sp"
+                    android:background="@color/ColorVeryLight1"
+                    android:paddingLeft="4dp" />
+
+                <Button
+                    android:id="@+id/buttonGoOnline"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:text="EXPLORE"
+                    android:textColor="@color/ColorAccent3"
+                    android:textSize="14sp"
+                    android:background="@color/ColorVeryLight1"
+                    android:paddingLeft="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:paddingRight="8dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

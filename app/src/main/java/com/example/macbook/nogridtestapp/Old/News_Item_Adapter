@@ -1,0 +1,109 @@
+package com.example.macbook.nogridtestapp.my_adapter;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.Html;
+import android.text.Layout;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.macbook.nogridtestapp.Blog_Data_Struckture;
+import com.example.macbook.nogridtestapp.R;
+import com.example.macbook.nogridtestapp.Rss_Data_Struckture;
+import com.example.macbook.nogridtestapp.async_classes.Async_Article_imageView;
+
+import java.util.ArrayList;
+import java.util.zip.Inflater;
+
+import static com.example.macbook.nogridtestapp.R.drawable.placeholder_medium_100x70;
+
+/**
+ * Created by macbook on 2015-06-26.
+ */
+public class News_Item_Adapter extends BaseAdapter {
+
+
+    private LayoutInflater inflater;
+    private ArrayList<Rss_Data_Struckture> rss_feed;
+    private Context context;
+
+    public News_Item_Adapter(Context context,ArrayList<Rss_Data_Struckture> rss_feed){
+
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.rss_feed = rss_feed;
+        this.context = context;
+     }
+
+    @Override
+    public int getCount() {
+        return rss_feed.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return rss_feed.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        Log.d("News_Item_Adapter", "###############get View wurde aufgerufen");
+        Log.d("News_Item_Adapter", Integer.toString(rss_feed.size()));
+
+        View view;
+        ViewHolder holder;
+
+        if(convertView == null){
+            view = inflater.inflate(R.layout.layout_news_article,parent,false);
+            holder = new ViewHolder();
+            holder.imageView = (ImageView) view.findViewById(R.id.rss_image_view);
+            holder.title = (TextView) view.findViewById(R.id.rss_title_view);
+            holder.description = (TextView) view.findViewById(R.id.rss_description_view);
+            holder.pubdate = (TextView) view.findViewById(R.id.rss_date_view);
+            view.setTag(holder);
+        }
+        else{
+            view = convertView;
+            holder = (ViewHolder) view.getTag();
+        }
+
+        Log.d("News_Item_Adapter", Integer.toString(position));
+        Rss_Data_Struckture rss_data = rss_feed.get(position);
+        Log.d("News_Item_Adapter", Integer.toString(position));
+        holder.title.setText(Html.fromHtml(rss_data.getRssTitle()));
+        Log.d("News_Item_Adapter", Integer.toString(position));
+
+        holder.description.setText(Html.fromHtml(rss_data.getRssDescription()));
+
+
+        holder.pubdate.setText(rss_data.getRssPubDate());
+
+
+
+        //AyncImageloader bekommt context und eine referenz auf den imageviewer
+        Async_Article_imageView my_imageTask = new Async_Article_imageView(context, holder.imageView);
+
+        my_imageTask.execute(rss_data.getImage());
+
+        return view;
+    }
+
+     class ViewHolder{
+
+        public ImageView imageView;
+        public TextView title;
+        public TextView description;
+        public TextView pubdate;
+    }
+
+}

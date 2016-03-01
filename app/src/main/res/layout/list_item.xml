@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+        android:src="@drawable/placeholder_medium_100x70"
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_gravity="center_vertical"
+        android:layout_width="110dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_medium_100x70" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingTop="1dip"
+        android:paddingLeft="7dip"
+        android:paddingRight="5dip"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="san-serif-condensed"
+            android:textStyle="bold"
+            android:textColor="@color/blog_title"
+            android:paddingTop="2dp"
+            android:maxLines="1"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:text="Title title"/>
+
+        <TextView
+            android:id="@+id/blog_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textColor="@color/blog_description"
+            android:paddingBottom="4dp"
+            android:maxLines="3"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:text="Description descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription description"/>
+
+    </LinearLayout>
+
+</LinearLayout>

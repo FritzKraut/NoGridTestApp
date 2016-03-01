@@ -1,0 +1,166 @@
+package com.example.macbook.nogridtestapp.async_classes;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.ImageView;
+
+import com.example.macbook.nogridtestapp.R;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+/**
+ * Created by macbook on 9/4/15.
+ *
+ *
+ *
+ *
+ * Erzeugt ImageView für den ArtikelView
+ *
+ *
+ * Nächstes mal, Async_Article_imageView und Async_ImageView zusammenfassen
+ * Weniger Code Ist Besserer Code
+ *
+ */
+public class Async_Article_imageView extends AsyncTask<String,Void,Bitmap> {
+
+
+    private final WeakReference<ImageView> imageViewReference;
+    private Bitmap bitmap = null;
+    private Context context;
+    private String name;
+
+
+    public Async_Article_imageView(Context context, ImageView imageView){
+        this.context = context;
+        imageViewReference = new WeakReference<ImageView>(imageView);
+    }
+
+    @Override
+    protected Bitmap doInBackground(String... params) {
+
+        Log.d("Async_Article_imageView", String.valueOf(params[0] == null));
+
+        if(params[0] != null) {
+            load_ImageFromUrl(params[0]);
+        }
+        else {
+            //load_Placeholder();
+        }
+
+        return bitmap;
+    }
+
+    @Override
+    protected void onPostExecute(Bitmap bitmap) {
+
+        //set Bitmap to iimageview
+        final ImageView imageView = imageViewReference.get();
+        imageView.setImageBitmap(bitmap);
+
+        //imageView.setImageResource(R.drawable.placeholder);
+
+        return;
+
+    }
+
+    private void load_ImageFromUrl(String image_url){
+
+        Log.d("Async_Article_imageView","load_ImageFromUrl");
+
+
+        try {
+            URL url = new URL(image_url);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = new BufferedInputStream(httpURLConnection.getInputStream());
+
+            //wir öffnen den stream, decoden stream und ohne speicher freizugeben, berechnen benötigte größe
+            // anhand der größe des imageviewers
+            final BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(inputStream,null,options);
+
+            //Calculate inSampleSize
+            options.inSampleSize = calculateInSampleSize(options, imageViewReference.get().getWidth(), imageViewReference.get().getHeight());
+            options.inJustDecodeBounds = false;
+            //inputStream muss geresetet werden, da er vorher einmal durchgelaufen ist, sonst retrunt der stream null
+            inputStream.reset();
+
+            // Decode bitmap with inSampleSize set
+            bitmap = BitmapFactory.decodeStream(inputStream,null,options);
+
+            inputStream.close();
+            httpURLConnection.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            Log.e("Async_Article_imageView", "Could Not Load Image");
+            load_Placeholder();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Async_Article_imageView","Could Not Load Image");
+            load_Placeholder();
+        }
+        return;
+
+    }
+
+    private void load_Placeholder(){
+
+
+        //WIRD NICHT GENUTZ DA PLACEHOLDER PER DEFAULT VERWENDET WIRD
+
+        Log.d("Async_Article_imageView","load_Placeholder");
+
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+
+        try{
+            BitmapFactory.decodeResource(context.getResources(),R.drawable.placeholder_medium_100x70,options);
+            options.inSampleSize = calculateInSampleSize(options,imageViewReference.get().getWidth(),imageViewReference.get().getHeight());
+            options.inJustDecodeBounds = false;
+            bitmap = BitmapFactory.decodeResource(context.getResources(),R.drawable.placeholder_medium_100x70,options);
+
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
+
+        return;
+    }
+
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (reqWidth == 0 || reqHeight == 0) return inSampleSize;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            // Calculate ratios of height and width to requested height and width
+            final int heightRatio = Math.round((float) height / (float) reqHeight);
+            final int widthRatio = Math.round((float) width / (float) reqWidth);
+
+            // Choose the smallest ratio as inSampleSize value, this will guarantee
+            // a final image with both dimensions larger than or equal to the
+            // requested height and width.
+            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+        }
+
+        return inSampleSize;
+    }
+
+}

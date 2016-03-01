@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_dialog_name"
+        android:text="@string/add_dialog_name"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_dialog_url"
+        android:layout_below="@+id/edit_dialog_name"
+        android:layout_alignLeft="@+id/edit_dialog_name"
+        android:layout_alignStart="@+id/edit_dialog_name"
+        android:text="@string/add_dialog_URL"
+        android:layout_alignRight="@+id/edit_dialog_name"
+        android:layout_alignEnd="@+id/edit_dialog_name" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_dialog_OK"
+            android:id="@+id/button_dialog_ok"
+            android:layout_below="@+id/edit_dialog_url"
+            android:layout_alignLeft="@+id/edit_dialog_url"
+            android:layout_alignStart="@+id/edit_dialog_url"
+            android:layout_marginLeft="41dp"
+            android:layout_marginStart="41dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_dialog_Cancel"
+            android:id="@+id/button_dialog_cancel"
+            android:layout_below="@+id/edit_dialog_url"
+            android:layout_toRightOf="@+id/button_dialog_ok"
+            android:layout_toEndOf="@+id/button_dialog_ok" />
+
+
+
+
+
+</RelativeLayout>

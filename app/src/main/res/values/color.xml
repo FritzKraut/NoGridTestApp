@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ColorPrimary">#3F51B5</color>
+    <color name="ColorPrimaryDark">#1A237E</color>
+    <color name="ColorAccent1">#EF767A</color>
+    <color name="ColorAccent2">#FFC107</color>
+    <color name="ColorAccent3">#2E7D32</color>
+    <color name="ColorAccent4">#689F38</color>
+    <color name="ColorVeryLight1">#E8EAF6</color>
+    <color name="blog_description">#6000</color>
+    <color name="blog_title">#c000</color>
+</resources>
