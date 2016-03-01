@@ -1,0 +1,90 @@
+
+
+
+-> instance of nochmal genauer angucken
+-> generell in den neuen code nochmal reingucken, es könnte einiges überflüssig sein
+
+
+[PROGRESS]
+
+	29.08.2015
+		auto correction, falls http:// oder https:// fehlt
+		correctur im xmlparser, ein .nextline war zuviel
+
+[TO-DO]
+
+		[MILE STONES]
+			statisticle gedönse
+
+		[High]
+			enfernen button
+			urls ohne http protokol laden
+
+		[MEDIUM]
+			auto install, mit opm, mit connection
+			refresh durch herrunterziehen
+			refresh nach hinzufügen von rss feed
+			reihenfolge ändern
+			ladeSpinner + ladebalken
+			regular expression gif
+			update UI
+
+		[LOW]
+			thumbnails - in richtiger größe laden(done), asyc(done) und lurcache
+			bearbeitungs möglichkeit der blogs, namen ändern usw
+			animationen
+			bei neuen blognamen darauf achten das kein / drin sind, sonst gibts probleme beim speichern von XML dateinen und Thumbnails
+
+
+[PROBLEME]
+
+
+		memory leak am name bundel von async_urlTest
+		view-source:https://www.vice.com/de/rss
+		vice deutschland kaputter feed, catch schreiben
+		vice usa, loading fehler, keine ahnung was da los ist
+		manche Images werden nicht geladen, scheind ein problem mit dem reset des BufferedStream zu sein
+		in android 5.1 gibt lässt sich kein einziges bild laden!!!
+		
+		
+-----------------------------------------------------------------------------------------------
+
+										[[SOLVED]]
+		[High]
+
+			images - in richtiger größe laden(done), asyc(done) und lurcache (done)
+				-> mit hilfe eines youtube videos,
+				-> Adapter und loader habe ich in eine datei gepackt, so das der zugriff auf
+					den cache leichter zu realisieren war
+			recycler view
+
+
+
+		[MEDIUM]
+
+			Description in html darstellen
+				-> Html.fromHtml() Funktion und ner menge regEx
+			einige bilder lassen sich nicht downloaden, zugroß?
+				-> .reset() hat nicht funtioniert und die SampleSize hat nicht richtig funktioniert
+
+
+
+		[LOW]
+
+-----------------------------------------------------------------------------------------------
+[NEXT TIME]
+		überlegen funktionen an verschidensten stellen genutzt werden müssen. 
+		überlegen wie is diese funktioon nur einmal schreiben muss um sie an all diesen stellen zuverwenden. 
+		ohne sie jedesmal neu zu schreiben
+
+		ImageWorker class mit subclasse, das nächste mal benutzen, vererben funktionen und Cache
+		das vereinfacht den code, da ich nicht für jede activity die bilder benutzt neue funktionen schreiben muss
+
+		Volley benutzen!
+
+		nicht jeden AsyncTask in eine eigene klasse schrebien
+
+
+
+
+
