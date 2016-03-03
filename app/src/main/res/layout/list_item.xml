@@ -3,52 +3,74 @@
 <!--
         android:src="@drawable/placeholder_medium_100x70"
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp">
+    android:layout_height="90dp"
+    android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_gravity="center_vertical"
-        android:layout_width="110dp"
-        android:layout_height="90dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/placeholder_medium_100x70" />
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/blog_card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:elevation="5dp"
+        card_view:cardCornerRadius="4dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:paddingTop="1dip"
-        android:paddingLeft="7dip"
-        android:paddingRight="5dip"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/text_view_title"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="san-serif-condensed"
-            android:textStyle="bold"
-            android:textColor="@color/blog_title"
-            android:paddingTop="2dp"
-            android:maxLines="1"
-            android:textAppearance="@android:style/TextAppearance.Medium"
-            android:text="Title title"/>
+            android:orientation="horizontal"
+            android:paddingLeft="7dip"
+            android:paddingRight="5dip"
+            android:paddingTop="1dip"
+            android:gravity="fill_horizontal">
 
-        <TextView
-            android:id="@+id/blog_description"
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_medium_100x70" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:textColor="@color/blog_description"
-            android:paddingBottom="4dp"
-            android:maxLines="3"
-            android:textAppearance="@android:style/TextAppearance.Small"
-            android:text="Description descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription description"/>
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="7dip"
+            android:paddingRight="5dip"
+            android:paddingTop="1dip">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="san-serif-condensed"
+                android:maxLines="1"
+                android:paddingTop="2dp"
+                android:text="Title title"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="@color/blog_title"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/blog_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:paddingBottom="4dp"
+                android:text="Description descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription descriptionDescription description"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                android:textColor="@color/blog_description" />
+
+        </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</FrameLayout>

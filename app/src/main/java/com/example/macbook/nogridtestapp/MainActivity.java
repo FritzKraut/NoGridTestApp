@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.util.LruCache;
 import android.util.Log;
@@ -15,12 +17,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.macbook.nogridtestapp.my_adapter.MyAdapter;
+import com.example.macbook.nogridtestapp.my_adapter.BlogAdapter;
 import com.example.macbook.nogridtestapp.my_fragments.Add_Dialog_Fragment;
 import com.example.macbook.nogridtestapp.my_interface.Add_Dialog_Interface;
 import com.example.macbook.nogridtestapp.my_interface.AsyncResponse;
@@ -52,10 +52,11 @@ import java.util.ArrayList;
 */
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AsyncResponse, Add_Dialog_Interface {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AsyncResponse, Add_Dialog_Interface, BlogAdapter.ClickListner{
 
     private ArrayList<Blog_Data_Struckture> blogList = new ArrayList<Blog_Data_Struckture>();
-
+    private RecyclerView mRecyclerView;
+    private RecyclerView.LayoutManager mLayoutManager;
     //BitmapCache
     private LruCache<String, Bitmap> mMemoryCache;
 
@@ -108,15 +109,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void uiFunction() {
 
-        ListView list = (ListView) findViewById(R.id.list_view);
-        ListAdapter listAdapter = new MyAdapter(this, blogList, mMemoryCache);
+        mRecyclerView = (RecyclerView) findViewById(R.id.list_view);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        //mRecyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //mProgress = (ProgressBar) findViewById(R.id.progressBarActivityMain);
-        //mProgress.setVisibility(View.INVISIBLE);
+        // specify an adapter (see also next example)
+        BlogAdapter mAdapter = new BlogAdapter(this, blogList);
+        mAdapter.setclickListener(this);
+        mRecyclerView.setAdapter(mAdapter);
 
-        list.setAdapter(listAdapter);
 
-        list.setOnItemClickListener(this);
 
     }
 
@@ -489,5 +495,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    @Override
+    public void ItemClicked(View view, int position) {
+        get_and_view_RssNews_Object(position);
+
+    }
 }
 
